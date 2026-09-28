@@ -9,7 +9,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         * {
@@ -20,36 +23,39 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #fcfcfc;
-            color: #111111;
+            background-color: #0b0d11;
+            color: #ffffff;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 1. HEADER & NAVBAR --- */
+        /* --- 1. LUXURY NAVBAR --- */
         .chyris-header {
             width: 100%;
-            background: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
+            background: rgba(11, 13, 17, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .header-container {
-            max-width: 1400px;
+            max-width: 1360px;
             margin: 0 auto;
-            padding: 18px 40px;
+            padding: 18px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .brand-logo a {
-            font-size: 26px;
-            font-weight: 600;
-            letter-spacing: 5px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            color: #111111;
+            color: #ffffff;
             text-decoration: none;
         }
 
@@ -62,9 +68,9 @@
 
         .nav-links li a {
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 1.5px;
-            color: #222222;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #e0e0e0;
             text-transform: uppercase;
             font-weight: 500;
             position: relative;
@@ -72,36 +78,38 @@
         }
 
         .nav-links li a:hover {
-            color: #caa048;
+            color: #d4af37;
         }
 
         .badge-hot {
-            background-color: #ff3344;
+            background-color: #e53935;
             color: #ffffff;
-            font-size: 9px;
-            padding: 2px 5px;
-            border-radius: 4px;
+            font-size: 8px;
+            padding: 2px 4px;
+            border-radius: 3px;
             position: absolute;
-            top: -14px;
-            right: 0;
+            top: -12px;
+            right: -4px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
         .btn-3d {
-            background-color: #caa048;
+            background: linear-gradient(135deg, #d4af37 0%, #aa8420 100%);
             color: #ffffff !important;
-            padding: 9px 20px;
-            border-radius: 6px;
-            font-size: 13px;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
         }
 
         .btn-3d:hover {
-            background-color: #b38b36;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .header-actions {
@@ -111,130 +119,166 @@
         }
 
         .action-icon {
-            color: #111111;
-            cursor: pointer;
+            color: #ffffff;
             text-decoration: none;
             display: flex;
             align-items: center;
+            transition: opacity 0.2s;
+        }
+
+        .action-icon:hover {
+            opacity: 0.7;
         }
 
         .action-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 19px;
+            height: 19px;
             stroke-width: 1.8;
         }
 
-        /* --- 2. ORIGINAL HERO BANNER --- */
-        .chyris-hero {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 70px 40px 60px;
+        /* --- 2. CINEMATIC VIDEO HERO SECTION --- */
+        .cinematic-hero {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            min-height: 600px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 40px;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
         }
 
-        .hero-text {
-            flex: 1.2;
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
         }
 
-        .hero-text h1 {
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(11, 13, 17, 0.4) 0%, rgba(11, 13, 17, 0.85) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 850px;
+            padding: 0 25px;
+        }
+
+        .hero-subtag {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #d4af37;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 64px;
             line-height: 1.15;
-            color: #1a273b;
-            font-weight: 700;
-            margin-bottom: 25px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
 
-        .hero-text p {
-            font-size: 15px;
+        .hero-content p {
+            font-size: 14px;
             line-height: 1.8;
-            color: #555555;
-            max-width: 500px;
-            margin-bottom: 30px;
+            color: #cfd3dc;
+            max-width: 580px;
+            margin: 0 auto 34px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .hero-btn {
             display: inline-block;
-            background: #111111;
+            background: transparent;
             color: #ffffff;
-            padding: 14px 34px;
+            border: 1px solid #d4af37;
+            padding: 14px 38px;
             text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: 11px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-btn:hover {
-            background: #caa048;
+            background: #d4af37;
+            color: #111111;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        .hero-image-box {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image-box img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        /* --- 3. MALE & FEMALE CURATED OPTIONS SECTION --- */
+        /* --- 3. DUAL GENDER SLIDER / COLLECTION SECTION --- */
         .gender-options-wrap {
-            max-width: 1400px;
-            margin: 30px auto 90px;
-            padding: 0 40px;
+            max-width: 1360px;
+            margin: 80px auto;
+            padding: 0 30px;
         }
 
-        .gender-heading {
+        .section-title-box {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        .gender-heading span {
-            font-size: 11px;
+        .section-title-box span {
+            font-size: 10px;
             letter-spacing: 3px;
-            color: #888888;
+            color: #d4af37;
             text-transform: uppercase;
+            font-weight: 600;
             display: block;
             margin-bottom: 8px;
         }
 
-        .gender-heading h3 {
+        .section-title-box h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 34px;
-            letter-spacing: 2px;
+            font-size: 36px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #111111;
+            color: #ffffff;
             font-weight: 600;
         }
 
         .gender-dual-slider {
-            display: flex;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             width: 100%;
-            min-height: 520px;
         }
 
         .gender-card-item {
-            flex: 1;
             position: relative;
+            height: 540px;
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            transition: transform 0.4s ease;
+            padding-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease;
         }
 
         .gender-card-item:hover {
@@ -242,38 +286,41 @@
         }
 
         .gender-card-item.male-option {
-            background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80');
+            background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85');
+            background-position: top center;
         }
 
         .gender-card-item.female-option {
-            background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80');
+            background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85');
+            background-position: top center;
         }
 
         .inner-overlay-box {
-            background: rgba(255, 255, 255, 0.96);
-            padding: 38px 46px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 26px 36px;
             text-align: center;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
-            min-width: 290px;
-            max-width: 82%;
-            backdrop-filter: blur(4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 82%;
+            max-width: 360px;
+            backdrop-filter: blur(6px);
         }
 
         .inner-overlay-box .sub-label {
-            font-size: 10px;
-            letter-spacing: 2.5px;
-            color: #888888;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #666666;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
+            font-weight: 600;
         }
 
         .inner-overlay-box h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            letter-spacing: 3.5px;
+            letter-spacing: 3px;
             color: #111111;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             font-weight: 600;
         }
@@ -283,98 +330,96 @@
             letter-spacing: 2px;
             color: #111111;
             text-decoration: underline;
-            text-underline-offset: 5px;
+            text-underline-offset: 4px;
             text-transform: uppercase;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         .inner-overlay-box .btn-link:hover {
             color: #caa048;
         }
 
-        /* --- 4. FEATURED PRODUCTS GRID --- */
+        /* --- 4. FEATURED CREATIONS --- */
         .products-section {
-            max-width: 1400px;
-            margin: 0 auto 90px;
-            padding: 0 40px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            max-width: 1360px;
+            margin: 0 auto 100px;
+            padding: 0 30px;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
         }
 
         .product-card {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
+            background: #14171f;
+            padding: 18px;
+            border-radius: 6px;
             text-align: center;
-            border: 1px solid #f0f0f0;
-            transition: box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .product-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
         .product-card img {
             width: 100%;
-            height: 260px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 18px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            background-color: #0b0d11;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.03);
         }
 
         .product-card h4 {
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
+            color: #f0f0f0;
         }
 
         .product-card .price {
-            font-size: 14px;
-            color: #caa048;
+            font-size: 13px;
+            color: #d4af37;
             font-weight: 600;
+            letter-spacing: 1px;
         }
 
         /* --- 5. FOOTER --- */
         .chyris-footer {
-            background: #111111;
+            background: #07080a;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             color: #ffffff;
-            padding: 60px 40px 30px;
+            padding: 60px 30px 25px;
         }
 
         .footer-container {
-            max-width: 1400px;
+            max-width: 1360px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .footer-col h5 {
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            color: #caa048;
+            margin-bottom: 18px;
+            color: #d4af37;
         }
 
         .footer-col ul {
@@ -382,37 +427,42 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-col ul li a {
-            color: #bbbbbb;
+            color: #8f95a5;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #222222;
-            font-size: 12px;
-            color: #777777;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 11px;
+            color: #636875;
+            letter-spacing: 1px;
         }
 
+        /* Responsive Design */
         @media (max-width: 900px) {
-            .chyris-hero {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-            .hero-text h1 {
+            .hero-content h1 {
                 font-size: 42px;
             }
             .gender-dual-slider {
-                flex-direction: column;
-                min-height: auto;
+                grid-template-columns: 1fr;
             }
             .gender-card-item {
-                min-height: 380px;
+                height: 420px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
             }
             .nav-links {
                 display: none;
@@ -455,27 +505,29 @@
     </header>
 
     <main>
-        <!-- 2. ORIGINAL HERO BANNER ("Timeless Brilliance, Individually Crafted") -->
-        <section class="chyris-hero">
-            <div class="hero-text">
-                <h1>Timeless Brilliance,<br>Individually Crafted</h1>
-                <p>Bespoke diamond rings and fine jewelry crafted to order with uncompromising artistry and certified precision.</p>
+        <!-- 2. CINEMATIC BACKGROUND VIDEO HERO -->
+        <section class="cinematic-hero">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+                <span class="hero-subtag">Haute Joaillerie & Diamonds</span>
+                <h1>Timeless Brilliance, Individually Crafted</h1>
+                <p>Bespoke diamond rings and high jewelry masterpieces created with exceptional precision and eternal artistry.</p>
                 <a href="shop.html" class="hero-btn">Explore Masterpieces</a>
-            </div>
-            <div class="hero-image-box">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Chyris Fine Jewelry">
             </div>
         </section>
 
-        <!-- 3. MALE / FEMALE EXPLORE CARDS (HIS LEGACY & HER BRILLIANCE) -->
+        <!-- 3. SHOP BY COLLECTION (HIS LEGACY & HER BRILLIANCE) -->
         <section class="gender-options-wrap">
-            <div class="gender-heading">
+            <div class="section-title-box" data-aos="fade-up" data-aos-duration="900">
                 <span>Tailored Curations</span>
                 <h3>Shop By Collection</h3>
             </div>
             <div class="gender-dual-slider">
-                <!-- Male Option -->
-                <div class="gender-card-item male-option">
+                <!-- Male Side -->
+                <div class="gender-card-item male-option" data-aos="fade-right" data-aos-duration="1000">
                     <div class="inner-overlay-box">
                         <span class="sub-label">THE MEN'S EDIT</span>
                         <h2>HIS LEGACY</h2>
@@ -483,8 +535,8 @@
                     </div>
                 </div>
 
-                <!-- Female Option -->
-                <div class="gender-card-item female-option">
+                <!-- Female Side -->
+                <div class="gender-card-item female-option" data-aos="fade-left" data-aos-duration="1000">
                     <div class="inner-overlay-box">
                         <span class="sub-label">BRIDAL & SOLITAIRES</span>
                         <h2>HER BRILLIANCE</h2>
@@ -494,25 +546,25 @@
             </div>
         </section>
 
-        <!-- 4. FEATURED PRODUCTS GRID -->
+        <!-- 4. FEATURED CREATIONS -->
         <section class="products-section">
-            <div class="section-header">
-                <h2>Featured Creations</h2>
-                <p style="color:#777; font-size:13px; letter-spacing:1px;">HANDPICKED SOLITAIRES & PLATINUM BANDS</p>
+            <div class="section-title-box" data-aos="fade-up" data-aos-duration="900">
+                <span>Certified Perfection</span>
+                <h3>Featured Creations</h3>
             </div>
             <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=600&q=80" alt="Solitaire Ring">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="Ring 1">
                     <h4>The Sovereign Solitaire</h4>
                     <span class="price">₹ 85,000</span>
                 </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" alt="Diamond Band">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Ring 2">
                     <h4>Eternity Pavé Band</h4>
                     <span class="price">₹ 49,500</span>
                 </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=600&q=80" alt="Platinum Band">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=800&q=80" alt="Ring 3">
                     <h4>Men's Brushed Platinum Band</h4>
                     <span class="price">₹ 58,000</span>
                 </div>
@@ -524,8 +576,8 @@
     <footer class="chyris-footer">
         <div class="footer-container">
             <div class="footer-col">
-                <h2 style="font-size:20px; letter-spacing:4px; margin-bottom:15px;">CHYRIS</h2>
-                <p style="color:#888; font-size:13px; max-width:280px; line-height:1.6;">High jewelry creations designed for eternal moments.</p>
+                <h2 style="font-size:20px; letter-spacing:4px; margin-bottom:12px;">CHYRIS</h2>
+                <p style="color:#777777; font-size:12px; max-width:280px; line-height:1.7;">High jewelry creations designed for eternal moments and bespoke craftsmanship.</p>
             </div>
             <div class="footer-col">
                 <h5>Navigation</h5>
@@ -550,5 +602,15 @@
         </div>
     </footer>
 
+    <!-- AOS JS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 120,
+            easing: 'ease-out-cubic'
+        });
+    </script>
 </body>
 </html>
