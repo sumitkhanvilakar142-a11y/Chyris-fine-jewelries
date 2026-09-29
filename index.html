@@ -14,6 +14,9 @@
     <!-- AOS (Animate On Scroll) Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- Spline 3D Web Component Script -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -38,7 +41,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
         }
 
         .header-container {
@@ -103,8 +105,8 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn-3d:hover {
@@ -136,7 +138,7 @@
             stroke-width: 1.8;
         }
 
-        /* --- 2. CINEMATIC VIDEO HERO SECTION --- */
+        /* --- 2. CINEMATIC HERO SECTION --- */
         .cinematic-hero {
             position: relative;
             width: 100%;
@@ -165,7 +167,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle, rgba(11, 13, 17, 0.4) 0%, rgba(11, 13, 17, 0.85) 100%);
+            background: radial-gradient(circle, rgba(11, 13, 17, 0.45) 0%, rgba(11, 13, 17, 0.88) 100%);
             z-index: 2;
         }
 
@@ -219,8 +221,6 @@
             text-transform: uppercase;
             font-weight: 600;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .hero-btn:hover {
@@ -229,7 +229,66 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- 3. DUAL GENDER SLIDER / COLLECTION SECTION --- */
+        /* --- 3. INTERACTIVE 3D SHOWCASE SECTION --- */
+        .interactive-3d-section {
+            max-width: 1360px;
+            margin: 80px auto;
+            padding: 0 30px;
+        }
+
+        .spline-showcase-box {
+            background: radial-gradient(circle at center, #171c26 0%, #0d0f14 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 520px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .spline-info {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .spline-info span {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #d4af37;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .spline-info h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+
+        .spline-info p {
+            color: #9ba1b0;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .spline-viewer-wrapper {
+            flex: 1.2;
+            height: 520px;
+            position: relative;
+        }
+
+        .spline-viewer-wrapper spline-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- 4. DUAL GENDER SLIDER / COLLECTION SECTION --- */
         .gender-options-wrap {
             max-width: 1360px;
             margin: 80px auto;
@@ -340,7 +399,7 @@
             color: #caa048;
         }
 
-        /* --- 4. FEATURED CREATIONS --- */
+        /* --- 5. FEATURED CREATIONS --- */
         .products-section {
             max-width: 1360px;
             margin: 0 auto 100px;
@@ -396,7 +455,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- 5. FOOTER --- */
+        /* --- 6. FOOTER --- */
         .chyris-footer {
             background: #07080a;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -450,10 +509,20 @@
             letter-spacing: 1px;
         }
 
-        /* Responsive Design */
         @media (max-width: 900px) {
             .hero-content h1 {
                 font-size: 42px;
+            }
+            .spline-showcase-box {
+                flex-direction: column;
+            }
+            .spline-viewer-wrapper {
+                height: 380px;
+                width: 100%;
+            }
+            .spline-info {
+                padding: 30px;
+                text-align: center;
             }
             .gender-dual-slider {
                 grid-template-columns: 1fr;
@@ -472,7 +541,7 @@
 </head>
 <body>
 
-    <!-- 1. CHYRIS HEADER -->
+    <!-- 1. HEADER -->
     <header class="chyris-header">
         <div class="header-container">
             <div class="brand-logo">
@@ -487,7 +556,7 @@
                     <a href="shop.html">Exclusive <span class="badge-hot">HOT</span></a>
                 </li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="customizer.html" class="btn-3d">3D Studio</a></li>
+                <li><a href="customizer-ring.html" class="btn-3d">3D Studio</a></li>
             </ul>
 
             <div class="header-actions">
@@ -515,11 +584,26 @@
                 <span class="hero-subtag">Haute Joaillerie & Diamonds</span>
                 <h1>Timeless Brilliance, Individually Crafted</h1>
                 <p>Bespoke diamond rings and high jewelry masterpieces created with exceptional precision and eternal artistry.</p>
-                <a href="shop.html" class="hero-btn">Explore Masterpieces</a>
+                <a href="customizer-ring.html" class="hero-btn">Enter 3D Virtual Atelier</a>
             </div>
         </section>
 
-        <!-- 3. SHOP BY COLLECTION (HIS LEGACY & HER BRILLIANCE) -->
+        <!-- 3. INTERACTIVE 3D SPLINE SHOWCASE -->
+        <section class="interactive-3d-section">
+            <div class="spline-showcase-box" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="spline-info">
+                    <span>Virtual Showroom Feature</span>
+                    <h2>Interactive 3D Solitaire</h2>
+                    <p>Experience true craftsmanship from every dimension. Click, drag, and rotate our signature 18K Yellow Gold ring in real time with high-precision reflections.</p>
+                    <a href="customizer-ring.html" class="hero-btn">Full Screen 3D Customizer</a>
+                </div>
+                <div class="spline-viewer-wrapper">
+                    <spline-viewer url="https://prod.spline.design/d-5vGhvoWMNdLxeG/scene.splinecode"></spline-viewer>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SHOP BY COLLECTION -->
         <section class="gender-options-wrap">
             <div class="section-title-box" data-aos="fade-up" data-aos-duration="900">
                 <span>Tailored Curations</span>
@@ -546,7 +630,7 @@
             </div>
         </section>
 
-        <!-- 4. FEATURED CREATIONS -->
+        <!-- 5. FEATURED CREATIONS -->
         <section class="products-section">
             <div class="section-title-box" data-aos="fade-up" data-aos-duration="900">
                 <span>Certified Perfection</span>
@@ -572,7 +656,7 @@
         </section>
     </main>
 
-    <!-- 5. FOOTER -->
+    <!-- 6. FOOTER -->
     <footer class="chyris-footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -602,7 +686,7 @@
         </div>
     </footer>
 
-    <!-- AOS JS Script -->
+    <!-- AOS Animation Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
