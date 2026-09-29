@@ -11,13 +11,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- AOS (Animate On Scroll) Library -->
+    <!-- AOS (Animate On Scroll) Stylesheet -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Spline 3D Web Component Script -->
+    <!-- Spline 3D Web Component Engine -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
 
     <style>
+        /* ==========================================================================
+           CHYRIS FINE JEWELRY - COMPLETE EMBEDDED STYLES
+           ========================================================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -26,17 +30,18 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #0b0d11;
+            background-color: #08090c;
             color: #ffffff;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 1. LUXURY NAVBAR --- */
+        /* --- 1. NAVBAR --- */
         .chyris-header {
             width: 100%;
-            background: rgba(11, 13, 17, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(8, 9, 12, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
@@ -72,7 +77,7 @@
             text-decoration: none;
             font-size: 11px;
             letter-spacing: 2px;
-            color: #e0e0e0;
+            color: #d1d5db;
             text-transform: uppercase;
             font-weight: 500;
             position: relative;
@@ -87,18 +92,18 @@
             background-color: #e53935;
             color: #ffffff;
             font-size: 8px;
-            padding: 2px 4px;
+            padding: 2px 5px;
             border-radius: 3px;
             position: absolute;
             top: -12px;
-            right: -4px;
+            right: -6px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
         .btn-3d {
             background: linear-gradient(135deg, #d4af37 0%, #aa8420 100%);
-            color: #ffffff !important;
+            color: #111111 !important;
             padding: 8px 18px;
             border-radius: 4px;
             font-size: 11px;
@@ -138,7 +143,7 @@
             stroke-width: 1.8;
         }
 
-        /* --- 2. CINEMATIC HERO SECTION --- */
+        /* --- 2. HERO SECTION WITH BACKGROUND VIDEO --- */
         .cinematic-hero {
             position: relative;
             width: 100%;
@@ -148,6 +153,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background-color: #000000;
             text-align: center;
         }
 
@@ -162,12 +168,13 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             z-index: 1;
+            pointer-events: none;
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle, rgba(11, 13, 17, 0.45) 0%, rgba(11, 13, 17, 0.88) 100%);
+            background: radial-gradient(circle, rgba(8, 9, 12, 0.3) 0%, rgba(8, 9, 12, 0.85) 100%);
             z-index: 2;
         }
 
@@ -196,13 +203,13 @@
             letter-spacing: 2px;
             margin-bottom: 22px;
             text-transform: uppercase;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
         }
 
         .hero-content p {
             font-size: 14px;
             line-height: 1.8;
-            color: #cfd3dc;
+            color: #d1d5db;
             max-width: 580px;
             margin: 0 auto 34px;
             font-weight: 300;
@@ -229,7 +236,7 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* --- 3. INTERACTIVE 3D SHOWCASE SECTION --- */
+        /* --- 3. 3D SOLITAIRE SHOWCASE --- */
         .interactive-3d-section {
             max-width: 1360px;
             margin: 80px auto;
@@ -237,14 +244,14 @@
         }
 
         .spline-showcase-box {
-            background: radial-gradient(circle at center, #171c26 0%, #0d0f14 100%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: radial-gradient(circle at center, #151821 0%, #08090c 100%);
+            border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 12px;
             overflow: hidden;
             display: flex;
             align-items: center;
             min-height: 520px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
         .spline-info {
@@ -274,7 +281,7 @@
             color: #9ba1b0;
             font-size: 13px;
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .spline-viewer-wrapper {
@@ -288,7 +295,7 @@
             height: 100%;
         }
 
-        /* --- 4. DUAL GENDER SLIDER / COLLECTION SECTION --- */
+        /* --- 4. DUAL GENDER SECTION --- */
         .gender-options-wrap {
             max-width: 1360px;
             margin: 80px auto;
@@ -413,7 +420,7 @@
         }
 
         .product-card {
-            background: #14171f;
+            background: #12151d;
             padding: 18px;
             border-radius: 6px;
             text-align: center;
@@ -432,7 +439,7 @@
             object-fit: cover;
             border-radius: 4px;
             margin-bottom: 16px;
-            background-color: #0b0d11;
+            background-color: #08090c;
             transition: transform 0.5s ease;
         }
 
@@ -457,7 +464,7 @@
 
         /* --- 6. FOOTER --- */
         .chyris-footer {
-            background: #07080a;
+            background: #040507;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             color: #ffffff;
             padding: 60px 30px 25px;
@@ -509,9 +516,10 @@
             letter-spacing: 1px;
         }
 
+        /* --- RESPONSIVENESS --- */
         @media (max-width: 900px) {
             .hero-content h1 {
-                font-size: 42px;
+                font-size: 38px;
             }
             .spline-showcase-box {
                 flex-direction: column;
@@ -521,7 +529,7 @@
                 width: 100%;
             }
             .spline-info {
-                padding: 30px;
+                padding: 30px 20px;
                 text-align: center;
             }
             .gender-dual-slider {
@@ -541,7 +549,7 @@
 </head>
 <body>
 
-    <!-- 1. HEADER -->
+    <!-- 1. NAVBAR -->
     <header class="chyris-header">
         <div class="header-container">
             <div class="brand-logo">
@@ -576,14 +584,15 @@
     <main>
         <!-- 2. CINEMATIC BACKGROUND VIDEO HERO -->
         <section class="cinematic-hero">
-            <video autoplay muted loop playsinline class="bg-video">
+            <video autoplay muted loop playsinline preload="auto" class="bg-video">
                 <source src="hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
                 <span class="hero-subtag">Haute Joaillerie & Diamonds</span>
                 <h1>Timeless Brilliance, Individually Crafted</h1>
-                <p>Bespoke diamond rings and high jewelry masterpieces created with exceptional precision and eternal artistry.</p>
+                <p>Bespoke diamond masterworks created with eternal artistry, certified natural gems, and precision Italian goldsmithing.</p>
                 <a href="customizer-ring.html" class="hero-btn">Enter 3D Virtual Atelier</a>
             </div>
         </section>
@@ -638,17 +647,17 @@
             </div>
             <div class="product-grid">
                 <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="Ring 1">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="The Sovereign Solitaire">
                     <h4>The Sovereign Solitaire</h4>
                     <span class="price">₹ 85,000</span>
                 </div>
                 <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Ring 2">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Eternity Pavé Band">
                     <h4>Eternity Pavé Band</h4>
                     <span class="price">₹ 49,500</span>
                 </div>
                 <div class="product-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=800&q=80" alt="Ring 3">
+                    <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=800&q=80" alt="Brushed Platinum Band">
                     <h4>Men's Brushed Platinum Band</h4>
                     <span class="price">₹ 58,000</span>
                 </div>
@@ -686,7 +695,7 @@
         </div>
     </footer>
 
-    <!-- AOS Animation Script -->
+    <!-- AOS Animation Engine -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
